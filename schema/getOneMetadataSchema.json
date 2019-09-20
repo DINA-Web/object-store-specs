@@ -114,13 +114,6 @@
         },
         "relationships": {
           "properties": {
-            "managedAttributes": {
-              "allOf": [
-                {
-                  "$ref": "common/relationship.json"
-                }
-              ]
-            },
             "dcCreator": {
               "data": { 
               "type": "object",
