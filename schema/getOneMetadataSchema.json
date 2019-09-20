@@ -126,7 +126,7 @@
               "type": "object",
               "required": [
                  "id",
-                 "type",
+                 "type"
                ],
                "properties": {
                   "id": {
