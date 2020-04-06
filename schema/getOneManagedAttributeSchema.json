@@ -65,6 +65,14 @@
 								"dosal for specimen_view",
 								"CataloguedObject for identifier_scope"
 							]
+						},
+						"createdDate": {
+							"type": "string",
+							"description": "ref to the date this managed attribute was created. "
+						},
+						"description": {
+							"type": "object",
+							"description": "ref to the description of the managed attribute in both English and French languages"		
 						}
 					}
 				}
