@@ -2,7 +2,7 @@
 	"$id": "http://localhost:8080/json-schema/getOneManagedAttributeSchema.json",
 	"base": "http://localhost:8080/api",
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "Managed attributes schema",
+	"title": "The managed attributes schema",
 	"description": "The managed attributes for the media metadata",
 	"type": "object",
 	"required": [
@@ -20,10 +20,16 @@
 			"properties": {
 				"id": {
 					"type": "string",
-					"description": "Identifier of the managedAttribute as UUID"
+					"description": "ref to the identifier of the attribute",
+					"examples": [
+						"1",
+						"2",
+						"3",
+						"4"
+					]
 				},
 				"type": {
-					"const": "managed-attribute",
+					"const": "managedAttribute",
 					"description": "The type of the object being returned."
 				},
 				"attributes": {
@@ -34,7 +40,7 @@
 					"properties": {
 						"name": {
 							"type": "string",
-							"description": "Name of the managed attribute",
+							"description": "ref to the name of the managed attribute",
 							"examples": [
 								"specimen_view",
 								"identifier",
@@ -44,7 +50,7 @@
 						},
 						"managedAttributeType": {
 							"type": ["integer","string"],
-							"description": "Type of the managed attribute"
+							"description": "ref to the type of the managed attribute"
 						},						
 						"acceptedValues": {
 							"type": "array",
@@ -54,11 +60,19 @@
 									"description": "accepted value of the given managed attribute"
 								}
 							],
-							"description": "Accepted values of the named attribute (if any)",
+							"description": "ref to the accepted values of the named attribute if any",
 							"examples": [
-								"dosal for specimen_view",
+								"dorsal for specimen_view",
 								"CataloguedObject for identifier_scope"
 							]
+						},
+						"createdDate": {
+							"type": "string",
+							"description": "ref to the date this managed attribute was created. "
+						},
+						"description": {
+							"type": "object",
+							"description": "ref to the description of the managed attribute in both English and French languages"		
 						}
 					}
 				}
