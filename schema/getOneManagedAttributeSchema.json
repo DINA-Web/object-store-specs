@@ -2,7 +2,7 @@
 	"$id": "http://localhost:8080/json-schema/getOneManagedAttributeSchema.json",
 	"base": "http://localhost:8080/api",
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "The managed attributes schema",
+	"title": "Managed attributes schema",
 	"description": "The managed attributes for the media metadata",
 	"type": "object",
 	"required": [
@@ -20,7 +20,7 @@
 			"properties": {
 				"id": {
 					"type": "string",
-					"description": "ref to the identifier of the attribute",
+					"description": "Identifier of the managedAttribute as UUID",
 					"examples": [
 						"1",
 						"2",
@@ -29,7 +29,7 @@
 					]
 				},
 				"type": {
-					"const": "managedAttribute",
+					"const": "managed-attribute",
 					"description": "The type of the object being returned."
 				},
 				"attributes": {
@@ -40,7 +40,7 @@
 					"properties": {
 						"name": {
 							"type": "string",
-							"description": "ref to the name of the managed attribute",
+							"description": "Name of the managed attribute",
 							"examples": [
 								"specimen_view",
 								"identifier",
@@ -50,7 +50,7 @@
 						},
 						"managedAttributeType": {
 							"type": ["integer","string"],
-							"description": "ref to the type of the managed attribute"
+							"description": "Type of the managed attribute"
 						},						
 						"acceptedValues": {
 							"type": "array",
@@ -60,7 +60,7 @@
 									"description": "accepted value of the given managed attribute"
 								}
 							],
-							"description": "ref to the accepted values of the named attribute if any",
+							"description": "Accepted values of the named attribute (if any)",
 							"examples": [
 								"dorsal for specimen_view",
 								"CataloguedObject for identifier_scope"
@@ -68,11 +68,11 @@
 						},
 						"createdDate": {
 							"type": "string",
-							"description": "ref to the date this managed attribute was created. "
+							"description": "Date this managed attribute was created. "
 						},
 						"description": {
 							"type": "object",
-							"description": "ref to the description of the managed attribute in both English and French languages"		
+							"description": "Description of the managed attribute in both English and French languages"		
 						}
 					}
 				}
