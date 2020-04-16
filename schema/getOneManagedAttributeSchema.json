@@ -20,13 +20,7 @@
 			"properties": {
 				"id": {
 					"type": "string",
-					"description": "Identifier of the managedAttribute as UUID",
-					"examples": [
-						"1",
-						"2",
-						"3",
-						"4"
-					]
+					"description": "Identifier of the managedAttribute as UUID"
 				},
 				"type": {
 					"const": "managed-attribute",
@@ -40,7 +34,13 @@
 					"properties": {
 						"name": {
 							"type": "string",
-							"description": "Name of the managed attribute"
+							"description": "Name of the managed attribute",
+							"examples": [
+								"specimen_view",
+								"identifier",
+								"identifier_scope",
+								"type_status"
+							]							
 						},
 						"managedAttributeType": {
 							"type": ["integer","string"],
@@ -54,7 +54,11 @@
 									"description": "accepted value of the given managed attribute"
 								}
 							],
-							"description": "Accepted values of the named attribute (if any)"
+							"description": "Accepted values of the named attribute (if any)",
+							"examples": [
+								"dorsal for specimen_view",
+								"CataloguedObject for identifier_scope"
+							]							
 						},
 						"createdDate": {
 							"type": "string",
