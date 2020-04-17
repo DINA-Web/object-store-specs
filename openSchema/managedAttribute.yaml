@@ -70,10 +70,42 @@ paths:
             schema:
               $ref: '#/components/schemas/ManagedAttribute'
         description: Managed attribute to add
+  /v1/managed-attribute/{Id}:
+    get:
+      summary: Find managed attribute by ID
+      description: Returns a single managed attribute
+      operationId: getManagedAttributeById
+      parameters:
+        - name: Id
+          in: path
+          description: ID of managed attribute to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedAttribute'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Managed attribute not found
     patch:
       summary: update a managed attribute
       operationId: updateManagedAttribute
       description: update a managed attribute
+      parameters:
+        - name: Id
+          in: path
+          description: managed attribute id to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: managed attribute updated
