@@ -81,8 +81,8 @@ paths:
           description: ID of managed attribute to return
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
+            format: uuid            
       responses:
         "200":
           description: successful operation
@@ -101,11 +101,11 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: managed attribute id to delete
+          description: managed attribute id to patch
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
+            format: uuid
       responses:
         '200':
           description: managed attribute updated
@@ -127,8 +127,8 @@ paths:
           description: managed attribute id to delete
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
+            format: uuid            
       responses:
         '200':
           description: managed attribute marked as deleted
