@@ -188,5 +188,5 @@ components:
                   type: object
                   description: A map where the language is the key and the value is the description of this managed attribute in that language                      
                   example: {
-                     "fr":  Description au Francais,
+                     "fr":  Description en Français,
                      "en":  English description}
