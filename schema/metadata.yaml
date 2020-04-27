@@ -48,7 +48,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Metadata'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Metadata'                
         '400':
           description: bad input parameter
         '404':
@@ -61,7 +63,7 @@ paths:
         '201':
           description: metadata created
         '400':
-          description: 'invalid input, object invalid'
+          description: invalid input, object invalid
         '409':
           description: A metadata already exists
       requestBody:
@@ -84,15 +86,15 @@ paths:
             type: string
             format: uuid            
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Metadata'
-        "400":
+        '400':
           description: Invalid ID supplied
-        "404":
+        '404':
           description: Metadata not found
     patch:
       summary: update a metadata
@@ -110,7 +112,7 @@ paths:
         '200':
           description: metadata updated
         '400':
-          description: 'invalid input, object invalid'
+          description: invalid input, object invalid
       requestBody:
         content:
           application/json:
