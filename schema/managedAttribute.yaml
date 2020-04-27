@@ -182,9 +182,9 @@ components:
                   type: array
                   description: accepted values of the named attribute (if any)      
                   items: 
-                     oneOf:
-                        - $ref: '#/components/schemas/AcceptedValuesStr'
-                        - $ref: '#/components/schemas/AcceptedValuesInt'                  
+                    oneOf:
+                      - $ref: '#/components/schemas/AcceptedValuesStr'
+                      - $ref: '#/components/schemas/AcceptedValuesInt'                  
                   example: 
                     - dorsal
                     - 1 
