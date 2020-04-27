@@ -48,7 +48,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ManagedAttribute'
+                type: array
+                items:
+                  $ref: '#/components/schemas/ManagedAttribute'
         '400':
           description: bad input parameter
         '404':
@@ -171,13 +173,15 @@ components:
                 managedAttributeType:
                   description: type of the managed attribute          
                   enum: [
-                     string,
-                     integer]
+                     STRING,
+                     INTEGER]
                 acceptedValues:
                   type: array
                   description: accepted values of the named attribute (if any)      
                   items: 
-                    type: object                  
+                    oneOf:
+                      - $ref: '#/components/schemas/AcceptedValuesStr'
+                      - $ref: '#/components/schemas/AcceptedValuesInt'                  
                   example: 
                     - dorsal
                     - 1 
@@ -190,3 +194,8 @@ components:
                   example: {
                      "fr":  Description en Français,
                      "en":  English description}
+    AcceptedValuesStr:
+      type: string
+    AcceptedValuesInt:
+      type: integer
+      
