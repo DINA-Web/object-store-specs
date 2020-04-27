@@ -48,7 +48,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ManagedAttribute'
+                type: array
+                items:
+                  $ref: '#/components/schemas/ManagedAttribute'
         '400':
           description: bad input parameter
         '404':
@@ -89,9 +91,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items: 
-                  "$ref": "#/components/schemas/ManagedAttribute"
+                $ref: '#/components/schemas/ManagedAttribute'
         "400":
           description: Invalid ID supplied
         "404":
@@ -138,6 +138,7 @@ paths:
           description: invalid ID supplied
         '404':
           description: managed attribute not found
+
 components:
   schemas:
     ManagedAttribute:
@@ -178,7 +179,9 @@ components:
                   type: array
                   description: accepted values of the named attribute (if any)      
                   items: 
-                    type: object                  
+                    oneOf:
+                      - $ref: '#/components/schemas/AcceptedValuesStr'
+                      - $ref: '#/components/schemas/AcceptedValuesInt'                  
                   example: 
                     - dorsal
                     - 1 
@@ -191,3 +194,8 @@ components:
                   example: {
                      "fr":  Description en Français,
                      "en":  English description}
+    AcceptedValuesStr:
+      type: string
+    AcceptedValuesInt:
+      type: integer
+      
