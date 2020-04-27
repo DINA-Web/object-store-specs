@@ -89,7 +89,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ManagedAttribute'
+                type: array
+                items: 
+                  "$ref": "#/components/schemas/ManagedAttribute"
         "400":
           description: Invalid ID supplied
         "404":
@@ -136,7 +138,6 @@ paths:
           description: invalid ID supplied
         '404':
           description: managed attribute not found
-
 components:
   schemas:
     ManagedAttribute:
@@ -171,8 +172,8 @@ components:
                 managedAttributeType:
                   description: type of the managed attribute          
                   enum: [
-                     string,
-                     integer]
+                     STRING,
+                     INTEGER]
                 acceptedValues:
                   type: array
                   description: accepted values of the named attribute (if any)      
