@@ -47,7 +47,6 @@ paths:
           description: managed attributes satifying the query restrictions
           content:
             application/json:
-            # SYED responses would be array of data items, not just data object 
               schema:
                 type: array
                 items:
@@ -176,8 +175,6 @@ components:
                   enum: [
                      STRING,
                      INTEGER]
-                # SYED acceptedValues would be array of string or interger items. 
-                # This is implemented using oneOf keyword
                 acceptedValues:
                   type: array
                   description: accepted values of the named attribute (if any)      
