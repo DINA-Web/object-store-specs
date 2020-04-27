@@ -171,8 +171,6 @@ components:
                   description: name of the managed attribute
                   example: 
                     specimen_view
-                # SYED data file compliant to this schema may have value as - STRING or INTEGER,  
-                # that too only in uppercase.
                 managedAttributeType:
                   description: type of the managed attribute          
                   enum: [
