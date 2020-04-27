@@ -51,7 +51,7 @@ paths:
               schema:
                 type: array
                 items:
-                $ref: '#/components/schemas/ManagedAttribute'
+                  $ref: '#/components/schemas/ManagedAttribute'
         '400':
           description: bad input parameter
         '404':
