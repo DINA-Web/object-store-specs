@@ -279,7 +279,7 @@ components:
                           description: The id of the dcCreator.
                         type:
                           allOf: [
-                            $ref: 'https://raw.githubusercontent.com/xuemeigan/agent-specs/support_19138_Create_OpenAPI3_spec_for_Agent_module/schema/agent.yaml',
+                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml',
                             description: The type of the dcCreator object]
                 acMetadataCreator:                
                   type: object
