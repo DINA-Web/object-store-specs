@@ -1,0 +1,22 @@
+openapi: 3.0.0
+servers:
+  - description: DINA BICOE - AAFC
+    url: https://virtserver.dina-bicoe.com/AAFC/1.0.0
+info:
+  description: DINA Schema
+  version: "1.0.0"
+  title: DINA schema
+  contact:
+    email: bicoe-aafc@canada.ca
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+externalDocs:
+  description: 'Metadata API documentation'
+  url: 'file:./metadata.html'    
+paths:
+  /managedAttribute:
+    $ref: 'https://raw.githubusercontent.com/DINA-Web/object-store-specs/json-schema/schema/managedAttribute.yaml'
+  /metadata:
+    $ref: 'https://raw.githubusercontent.com/DINA-Web/object-store-specs/json-schema/schema/metadata.yaml'     
+  
