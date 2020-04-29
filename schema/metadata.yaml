@@ -42,6 +42,16 @@ paths:
             format: int32
             minimum: 0
             maximum: 50
+        - in: query
+          name: fields
+          description: names of sparse fields that should be in query results 
+          schema:
+            type: string
+        - in: query
+          name: include
+          description: names of related entities that should be in query results
+          schema:
+            type: string                      
       responses:
         '200':
           description: metadatas satifying the query restrictions
