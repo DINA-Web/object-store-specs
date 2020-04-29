@@ -279,7 +279,7 @@ components:
                           description: The id of the dcCreator.
                         type:
                           allOf: [
-                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml',
+                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml#/components/schemas/Agent',
                             description: The type of the dcCreator object]
                 acMetadataCreator:                
                   type: object
@@ -296,9 +296,7 @@ components:
                           type: string
                           description: The id of the acMetadataCreator.
                         type:
-                          allOf: [
-                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml',
-                            description: The type of the acMetadataCreator object]                                 
+                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml#/components/schemas/Agent'
                 acDerivedFrom:
                   type: object
                   required:
