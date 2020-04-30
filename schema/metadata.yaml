@@ -272,45 +272,14 @@ components:
                   items:
                     type: string
                     description: List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag
-            relationships:
-              properties:
                 dcCreator:
-                  type: object
-                  required:
-                    - data
-                  properties:                     
-                    data:
-                      type: object
-                      required:
-                        - id
-                        - type
-                      properties:
-                        id:
-                          type: string
-                          description: The id of the dcCreator.
-                        type:
-                          allOf: 
-                            - $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml#/components/schemas/Agent'
-                            - description: The type of the dcCreator object
+                  type: string
+                  format: uuid
                 acMetadataCreator:                
-                  type: object
-                  required:
-                    - data
-                  properties:                     
-                    data:
-                      type: object
-                      required:
-                        - id
-                        - type
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                          description: The id of the acMetadataCreator.
-                        type:
-                          allOf: 
-                            - $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml#/components/schemas/Agent'
-                            - description: The type of the acMetadataCreator object                                  
+                  type: string
+                  format: uuid
+            relationships:
+              properties:                                  
                 acDerivedFrom:
                   type: object
                   required:
