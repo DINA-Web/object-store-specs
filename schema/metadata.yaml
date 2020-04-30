@@ -165,6 +165,7 @@ components:
           properties:
             id:
               type: string
+              format: uuid
               description: Identifier of the object as UUID
             type:
               type: string
@@ -290,7 +291,7 @@ components:
                         type:
                           allOf: 
                             - $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml#/components/schemas/Agent'
-                            - description: The type of the dcCreator object]
+                            - description: The type of the dcCreator object
                 acMetadataCreator:                
                   type: object
                   required:
@@ -304,6 +305,7 @@ components:
                       properties:
                         id:
                           type: string
+                          format: uuid
                           description: The id of the acMetadataCreator.
                         type:
                           allOf: 
@@ -322,6 +324,7 @@ components:
                       properties:
                         id:
                           type: string
+                          format: uuid
                           description: The id of the metadata from which the object represented
                             by this metadata is derived from.
                         type:
