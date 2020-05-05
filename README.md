@@ -10,6 +10,7 @@ Rendered version: https://dina-web.github.io/object-store-specs/
 
 JSON-Schemas: https://github.com/DINA-Web/object-store-specs/tree/json-schema/schema
 
-# JSON Schema to GitHub Pages
+## API Specifications
 
-[Travis CI](https://travis-ci.org/) is configured to generate a new version of the rendered API specifications on each push. It is using [json-schema2adoc](https://github.com/AAFC-BICoE/json-schema2adoc) to transform the JSON Schemas of that repository into asciidoc files that are then included by the [API specification file](https://github.com/DINA-Web/object-store-specs/blob/json-schema/object-store-rest-api.adoc). A final conversion will generate an HTML that is pushed to GitHub pages.
+* Rendered version: https://dina-web.github.io/object-store-specs/
+* Open API 3 Schema: https://github.com/DINA-Web/object-store-specs/blob/master/schema/metadata.yaml
