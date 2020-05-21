@@ -1,0 +1,181 @@
+openapi: 3.0.0
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/AAFC/test/1.0.0
+info:
+  description: Object subtype schema corresponding to each object's DcType
+  version: "1.0.0"
+  title: Object subtype schema
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:
+  /v1/object-subtype:
+    get:
+      summary: get object-subtype
+      operationId: getObjectSubtypes
+      description: By passing in query string, user can get available object-subtypes authorised
+      parameters:
+        - in: query
+          name: filter[rsql]
+          description: pass an optional search string for looking up the object-subtypes
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: optional sort string, can have sort order such as descending denoted by "-"
+          schema:
+            type: string
+        - in: query
+          name: page[offset]
+          description: number of records to skip when paging
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: page[limit]
+          description: maximum number of records to return when paging
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 50
+      responses:
+        '200':
+          description: object-subtypes satifying the query restrictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjectSubtype'
+        '400':
+          description: bad input parameter
+        '404':
+          description: object-subtypes not found
+    post:
+      summary: adds a object-subtype
+      operationId: addObjectSubtype
+      description: Adds a object-subtype
+      responses:
+        '201':
+          description: object-subtype created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: An object-subtype already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectSubtype'
+        description: object-subtype to add
+  /v1/object-subtype/{Id}:
+    get:
+      summary: Find object-subtype by ID
+      description: Returns a single object-subtype
+      operationId: getObjectSubtypeById
+      parameters:
+        - name: Id
+          in: path
+          description: ID of object-subtype to return
+          required: true
+          schema:
+            type: string
+            format: uuid            
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectSubtype'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: object-subtype not found
+    patch:
+      summary: update an object-subtype
+      operationId: updateObjectSubtype
+      description: update an object-subtype
+      parameters:
+        - name: Id
+          in: path
+          description: object-subtype id to patch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: object-subtype updated
+        '400':
+          description: 'invalid input, object invalid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ObjectSubtype'
+        description: object-subtype to update
+    delete:
+      summary: delete an object-subtype
+      operationId: deleteObjectSubtype
+      description: delete an object-subtype
+      parameters:
+        - name: Id
+          in: path
+          description: object-subtype id to delete
+          required: true
+          schema:
+            type: string
+            format: uuid            
+      responses:
+        '200':
+          description: object-subtype marked as deleted
+        '400':
+          description: invalid ID supplied
+        '404':
+          description: object-subtype not found
+
+components:
+  schemas:
+    ObjectSubtype:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+            - type
+            - attributes
+          properties:
+            id:
+              type: string
+              description: Identifier of the object subtype as UUID
+            type:
+              type: string
+              description: The type of the object subtype data being returned.
+            attributes:
+              description: Schema representing the object subtype associated with each object's
+                DcType
+              type: object
+              required:
+                - dcType
+                - acSubtype
+              properties:
+                dcType:
+                  enum:
+                    - IMAGE
+                    - MOVING_IMAGE
+                    - SOUND
+                    - TEXT
+                  description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
+                acSubType:
+                  type: string
+                  description: A string describing the supporting specialized type of the
+                    resource's DcType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:subtype
