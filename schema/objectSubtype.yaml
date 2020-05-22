@@ -71,7 +71,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewObjectSubtype'
+              $ref: '#/components/schemas/ObjectSubtype'
         description: object-subtype to add
   /v1/object-subtype/{Id}:
     get:
@@ -150,49 +150,28 @@ components:
         data:
           type: object
           required:
-            - id
+            - type
+            - attributes
           properties:
-            id:
+            type:
               type: string
-              format: uuid
-          allOf:
-           - $ref: '#/components/schemas/CommonObjectSubtype'
-           
-    NewObjectSubtype:
-      type: object
-      required:
-        - data
-      properties:
-        data:
-          type: object
-          allOf:
-           - $ref: '#/components/schemas/CommonObjectSubtype'
-                      
-    CommonObjectSubtype:
-      type: object
-      required:
-        - type
-        - attributes
-      properties:
-        type:
-          type: string
-          description: The type of the object subtype data being returned.
-        attributes:
-          description: Schema representing the object subtype associated with each object's
+              description: The type of the object subtype data being returned.
+            attributes:
+              description: Schema representing the object subtype associated with each object's
                 DcType
-          type: object
-          required:
-            - dcType
-            - acSubtype
-          properties:
-            dcType:
-              enum:
-                - IMAGE
-                - MOVING_IMAGE
-                - SOUND
-                - TEXT
-              description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
-            acSubType:
-              type: string
-              description: A string describing the supporting specialized type of the
+              type: object
+              required:
+                - dcType
+                - acSubtype
+              properties:
+                dcType:
+                  enum:
+                    - IMAGE
+                    - MOVING_IMAGE
+                    - SOUND
+                    - TEXT
+                  description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
+                acSubType:
+                  type: string
+                  description: A string describing the supporting specialized type of the
                     resource's DcType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:subtype
