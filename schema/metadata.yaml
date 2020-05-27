@@ -196,7 +196,7 @@ components:
             - dcFormat
             - dcType
             - acDigitizationDate
-            - xmpUsageTerms
+            - xmpRightsUsageTerms
             - xmpRightsWebStatement
             - dcRights
           properties:
@@ -248,7 +248,7 @@ components:
               type: string
               description: Hash of the uploaded object. Automaticaly generated on successful
                 file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue
-            xmpUsageTerms:
+            xmpRightsUsageTerms:
               type: string
               description: Text instructions on how a resource can be legally used.
                 https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms
