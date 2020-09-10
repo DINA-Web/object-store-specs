@@ -180,8 +180,8 @@ components:
                   description: accepted values of the named attribute (if any)      
                   items: 
                     oneOf:
-                      - $ref: '#/components/schemas/AcceptedValuesStr'
-                      - $ref: '#/components/schemas/AcceptedValuesInt'                  
+                      - type: string
+                      - type: integer
                   example: 
                     - dorsal
                     - 1 
@@ -194,8 +194,4 @@ components:
                   example: {
                      "fr":  Description en Français,
                      "en":  English description}
-    AcceptedValuesStr:
-      type: string
-    AcceptedValuesInt:
-      type: integer
-      
+
