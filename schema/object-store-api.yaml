@@ -4,8 +4,8 @@ servers:
     url: https://virtserver.dina-aafc.com/AAFC/1.0.0
 info:
   description: Object Store API Schema
-  version: "1.0.0"
-  title: Object Store API Schema
+  version: "0.1.0"
+  title: Object Store API Schema - DRAFT
   contact:
     email: dina-aafc@canada.ca
   license:
