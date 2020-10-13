@@ -167,6 +167,10 @@ components:
               description: Identifier of the object as UUID              
           allOf:
            - $ref: '#/components/schemas/CommonMetadata'
+        meta:
+          type: object
+          allOf:
+           - $ref: '#/components/schemas/CommonMeta'
            
     NewMetadata:
       type: object
@@ -177,6 +181,30 @@ components:
           type: object
           allOf:
            - $ref: '#/components/schemas/CommonMetadata'
+        meta:
+          type: object
+          allOf:
+           - $ref: '#/components/schemas/CommonMeta'
+
+    CommonMeta:
+      type: object
+      required:
+        - external
+      properties:
+        external:
+          type: array
+          items:
+            type: object
+            required:
+              - href
+              - type
+            properties:
+              type:
+                type: string
+                example: person
+              href: 
+                type: string
+                example: dinaapi.org/agent/person                           
              
     CommonMetadata:
       type: object
@@ -294,7 +322,14 @@ components:
               format: uuid
             acMetadataCreator:                
               type: string
-              format: uuid
+              format: uuid                
             acDerivedFrom:
               type: string
-              format: uuid               
+              format: uuid
+
+
+
+
+
+
+
