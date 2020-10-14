@@ -8,11 +8,11 @@ Requirements/Specifications are recorded as [Issues](https://github.com/DINA-Web
 # API Specifications
 
 * Rendered version: https://dina-web.github.io/object-store-specs/
-* Open API 3 Schema: https://github.com/DINA-Web/object-store-specs/blob/master/schema/metadata.yaml
+* Open API 3 Schema: https://raw.githubusercontent.com/DINA-Web/object-store-specs/master/schema/object-store-api.yaml
 
 # Mock Server
 A mock API can be created based on the OpenAPI specifications with [Prism](https://github.com/stoplightio/prism).
 
-`docker run --init --rm -it -p 4010:4010 -P stoplight/prism:4 mock -h 0.0.0.0 https://raw.githubusercontent.com/DINA-Web/object-store-specs/master/schema/metadata.yaml`
+`docker run --init --rm -it -p 4010:4010 -P stoplight/prism:4 mock -h 0.0.0.0 https://raw.githubusercontent.com/DINA-Web/object-store-specs/master/schema/object-store-api.yaml`
 
 A mock server will now be accessible on `http://127.0.0.1:4010/v1/metadata`
