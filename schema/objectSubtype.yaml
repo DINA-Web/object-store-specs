@@ -175,7 +175,7 @@ components:
         - attributes
       properties:
         type:
-          type: string
+          enum: [object-subtype]      
           description: The type of the object subtype data being returned.
         attributes:
           description: Schema representing the object subtype associated with each object's

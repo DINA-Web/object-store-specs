@@ -185,7 +185,7 @@ components:
         - attributes
       properties:
         type:
-          type: string
+          enum: [metadata]      
           description: The type of the object of the data being returned.
         attributes:
           description: Schema representing the metadata associated with objects
@@ -292,9 +292,9 @@ components:
             dcCreator:
               type: string
               format: uuid
-            acMetadataCreator:                
-              type: string
-              format: uuid
+            acMetobject-typeadataCreator:                
+              typobject-typee: string
+              forobject-typemat: uuid
             acDerivedFrom:
               type: string
               format: uuid               
