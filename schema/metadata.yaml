@@ -292,9 +292,9 @@ components:
             dcCreator:
               type: string
               format: uuid
-            acMetobject-typeadataCreator:                
-              typobject-typee: string
-              forobject-typemat: uuid
+            acMetadataCreator:                
+              type: string
+              format: uuid
             acDerivedFrom:
               type: string
               format: uuid               
