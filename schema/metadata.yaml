@@ -336,12 +336,13 @@ components:
           properties:
             dcCreator:
               type: object
-              required: data
+              required:
+                - data
               properties:
                 data:
                   required:
-                    -type
-                    -id
+                    - type
+                    - id
                   properties:
                     type: 
                       enum: [person]
@@ -352,12 +353,13 @@ components:
                       example: 8f68a05f-937d-4d40-88b4-ed92720d9c3f
             acMetadataCreator:
               type: object
-              required: data
+              required:
+                - data
               properties:
                 data:
                   required:
-                    -type
-                    -id
+                    - type
+                    - id
                   properties:
                     type: 
                       enum: [person]
