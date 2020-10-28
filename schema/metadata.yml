@@ -1,20 +1,7 @@
-openapi: 3.0.0
-servers:
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/AAFC/test/1.0.0
-info:
-  description: Metadata schema
-  version: "1.0.0"
-  title: Metadata schema
-  contact:
-    email: you@your-company.com
-  license:
-    name: Apache 2.0
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 paths:
   /v1/metadata:
     get:
-      summary: get metadatas
+      summary: List metadatas
       operationId: getMetadatas
       description: By passing in query string, user can get available metadatas authorised
       parameters:
@@ -66,9 +53,9 @@ paths:
         "404":
           description: metadata not found
     post:
-      summary: adds a metadata
+      summary: Add a metadata
       operationId: addMetadata
-      description: Adds a metadata
+      description: Add a metadata
       responses:
         "201":
           description: metadata created
@@ -84,8 +71,8 @@ paths:
         description: Metadata to add
   /v1/metadata/{Id}:
     get:
-      summary: Find metadata by ID
-      description: Returns a single metadata
+      summary: Get a metadata
+      description: Return a single metadata
       operationId: getMetadataById
       parameters:
         - name: Id
@@ -107,9 +94,9 @@ paths:
         "404":
           description: Metadata not found
     patch:
-      summary: update a metadata
+      summary: Update a metadata
       operationId: updateMetadata
-      description: update a metadata
+      description: Update a metadata
       parameters:
         - name: Id
           in: path
@@ -130,9 +117,9 @@ paths:
               $ref: "#/components/schemas/Metadata"
         description: metadata to add
     delete:
-      summary: delete a metadata
+      summary: Delete a metadata
       operationId: deleteMetadata
-      description: delete a metadata
+      description: Delete a metadata
       parameters:
         - name: Id
           in: path

@@ -14,14 +14,14 @@ info:
    
 paths:
   /v1/metadata:
-    $ref: 'metadata.yaml#/paths/~1v1~1metadata'
+    $ref: 'metadata.yml#/paths/~1v1~1metadata'
   /v1/metadata/{Id}:
-    $ref: 'metadata.yaml#/paths/~1v1~1metadata~1{Id}'  
+    $ref: 'metadata.yml#/paths/~1v1~1metadata~1{Id}'  
   /v1/managed-attribute:
-    $ref: 'managedAttribute.yaml#/paths/~1v1~1managed-attribute'    
+    $ref: 'managed-attribute.yml#/paths/~1v1~1managed-attribute'    
   /v1/managed-attribute/{Id}:
-    $ref: 'managedAttribute.yaml#/paths/~1v1~1managed-attribute~1{Id}'
+    $ref: 'managed-attribute.yml#/paths/~1v1~1managed-attribute~1{Id}'
   /v1/object-subtype:
-    $ref: 'objectSubtype.yaml#/paths/~1v1~1object-subtype'
+    $ref: 'object-subtype.yml#/paths/~1v1~1object-subtype'
   /v1/object-subtype/{Id}:
-    $ref: 'objectSubtype.yaml#/paths/~1v1~1object-subtype~1{Id}'
+    $ref: 'object-subtype.yml#/paths/~1v1~1object-subtype~1{Id}'
