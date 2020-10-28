@@ -1,7 +1,7 @@
 paths:
   /v1/metadata:
     get:
-      summary: Get metadatas
+      summary: List metadatas
       operationId: getMetadatas
       description: By passing in query string, user can get available metadatas authorised
       parameters:

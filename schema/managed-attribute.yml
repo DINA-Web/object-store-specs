@@ -1,7 +1,7 @@
 paths:
   /v1/managed-attribute:
     get:
-      summary: Get managed attributes
+      summary: List managed attributes
       operationId: getManagedAttributes
       description: By passing in query string, user can get available managed attributes authorised
       parameters:

@@ -1,7 +1,7 @@
 paths:
   /v1/object-subtype:
     get:
-      summary: Get object-subtypes
+      summary: List object-subtypes
       operationId: getObjectSubtypes
       description: By passing in query string, user can get available object-subtypes authorised
       parameters:
