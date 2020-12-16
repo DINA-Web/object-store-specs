@@ -1,0 +1,181 @@
+paths:
+  /v1/object-upload:
+    get:
+      summary: List object-uploads
+      operationId: getObjectUploads
+      description: By passing in query string, user can get available object-uploads authorised
+      parameters:
+        - in: query
+          name: filter[rsql]
+          description: pass an optional search string for looking up the object-uploads
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: optional sort string, can have sort order such as descending denoted by "-"
+          schema:
+            type: string
+        - in: query
+          name: page[offset]
+          description: number of records to skip when paging
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: page[limit]
+          description: maximum number of records to return when paging
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 50
+      responses:
+        '200':
+          description: object-uploads satifying the query restrictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ObjectUpload'
+        '400':
+          description: bad input parameter
+        '404':
+          description: object-uploads not found
+  /v1/object-upload/{Id}:
+    get:
+      summary: Get an object-upload
+      description: Return a single object-upload
+      operationId: getObjectUploadById
+      parameters:
+        - name: Id
+          in: path
+          description: ID of object-upload to return
+          required: true
+          schema:
+            type: string
+            format: uuid            
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectUpload'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: object-upload not found
+  /v1/file/{bucket}:        
+    post:
+      summary: Upload a file to minio bucket
+      operationId: uploadFile
+      description: Upload a file to minio bucket
+      responses:
+        '201':
+          description: file uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectUpload'          
+        '400':
+          description: invalid input, object invalid
+        '409':
+          description: A file already exists
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                bucket:
+                  type: string
+                file:
+                  type: string
+                  format: base64
+components:
+  schemas:
+    ObjectUpload:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              format: uuid
+          allOf:
+           - $ref: '#/components/schemas/CommonObjectUpload'
+           
+    NewObjectUpload:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          allOf:
+           - $ref: '#/components/schemas/CommonObjectUpload'               
+    CommonObjectUpload:
+      type: object
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          enum: [object-upload]      
+          description: The type of the object-upload data being returned.
+        attributes:
+          type: object
+          required:
+            - fileIdentifier
+            - originalFilename
+            - sha1Hex
+            - bucket
+          properties:
+            fileIdentifier:
+              type: string
+              format: uuid
+              description: uploaded file's uuid
+            createdBy:
+              type: string
+              description: agent who has uploaded the file
+            createdOn:
+              type: string
+              description:
+                Point in time (ISO 8601 Date/Time) recording when the object-upload was created            
+            originalFilename:                
+              type: string
+              description: original file name when it is uploaded
+            sha1Hex:
+              type: string
+              description: original file's hex string representing the SHA-1 encoded file content
+            receivedMediaType:
+              type: string
+              description: original file's mediaType as it is received
+            detectedMediaType:
+              type: string
+              description: detected mediaType as by a library
+            detectedFileExtension:
+              type: string
+              description: detected file extenstion
+            evaluatedMediaType:
+              type: string
+              description: evaluated media type
+            evaluatedFileExtension:
+              type: string
+              description: evaluated file extension
+            sizeInBytes:
+              type: string
+              description: file size in bytes
+            thumbnailIdentifier:
+              type: string
+              format: uuid
+              description: uploaded file's thumbnail identifier
+            bucket:
+              type: string
+              description: bucket name as in minio server storage
