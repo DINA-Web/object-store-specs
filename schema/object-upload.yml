@@ -71,6 +71,13 @@ paths:
       summary: Upload a file to minio bucket
       operationId: uploadFile
       description: Upload a file to minio bucket
+      parameters:
+        - name: bucket
+          in: path
+          description: bucket of the file
+          required: true
+          schema:
+            type: string      
       responses:
         '201':
           description: file uploaded
