@@ -25,3 +25,9 @@ paths:
     $ref: 'object-subtype.yml#/paths/~1v1~1object-subtype'
   /v1/object-subtype/{Id}:
     $ref: 'object-subtype.yml#/paths/~1v1~1object-subtype~1{Id}'
+  /v1/object-upload:
+    $ref: 'object-upload.yml#/paths/~1v1~1object-upload'
+  /v1/object-upload/{Id}:
+    $ref: 'object-upload.yml#/paths/~1v1~1object-upload~1{Id}'
+  /v1/file/{bucket}:
+    $ref: 'object-upload.yml#/paths/~1v1~1file~1{bucket}'    
