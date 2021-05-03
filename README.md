@@ -8,7 +8,7 @@ Requirements/Specifications are recorded as [Issues](https://github.com/DINA-Web
 # API Specifications
 
 * Rendered version: https://dina-web.github.io/object-store-specs/
-* Open API 3 Schema: https://raw.githubusercontent.com/DINA-Web/object-store-specs/master/schema/object-store-api.yaml
+* Open API 3 Schema: https://raw.githubusercontent.com/DINA-Web/object-store-specs/master/schema/object-store-api.yml
 
 # API Implementation
 AAFC-BICoE [object-store-api](https://github.com/AAFC-BICoE/object-store-api)
