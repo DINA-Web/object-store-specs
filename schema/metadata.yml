@@ -227,6 +227,7 @@ components:
                 - SOUND
                 - TEXT
                 - DATASET
+                - UNDETERMINED
               description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
             acSubtype:
               type: string

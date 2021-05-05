@@ -177,6 +177,8 @@ components:
                 - MOVING_IMAGE
                 - SOUND
                 - TEXT
+                - DATASET
+                - UNDETERMINED
               description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
             acSubType:
               type: string
