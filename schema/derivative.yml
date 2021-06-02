@@ -1,0 +1,240 @@
+paths:
+  /v1/derivative:
+    get:
+      summary: List derivatives
+      operationId: getDerivatives
+      description: By passing in query string, user can get available derivatives authorised
+      parameters:
+        - in: query
+          name: filter[rsql]
+          description: pass an optional search string for looking up the derivatives
+          schema:
+            type: string
+        - in: query
+          name: sort
+          description: optional sort string, can have sort order such as descending denoted by "-"
+          schema:
+            type: string
+        - in: query
+          name: page[offset]
+          description: number of records to skip when paging
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: page[limit]
+          description: maximum number of records to return when paging
+          schema:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 50
+      responses:
+        '200':
+          description: derivatives satifying the query restrictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Derivative'
+        '400':
+          description: bad input parameter
+        '404':
+          description: derivatives not found
+    post:
+      summary: Add an derivative
+      operationId: addDerivative
+      description: Add an derivative
+      responses:
+        '201':
+          description: derivative created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: An derivative already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewDerivative'
+        description: derivative to add
+  /v1/derivative/{Id}:
+    get:
+      summary: Get an derivative
+      description: Return a single derivative
+      operationId: getDerivativeById
+      parameters:
+        - name: Id
+          in: path
+          description: ID of derivative to return
+          required: true
+          schema:
+            type: string
+            format: uuid            
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Derivative'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: derivative not found
+    patch:
+      summary: Update an derivative
+      operationId: updateDerivative
+      description: Update an derivative
+      parameters:
+        - name: Id
+          in: path
+          description: derivative id to patch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: derivative updated
+        '400':
+          description: 'invalid input, object invalid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Derivative'
+        description: derivative to update
+    delete:
+      summary: Delete an derivative
+      operationId: deleteDerivative
+      description: Delete an derivative
+      parameters:
+        - name: Id
+          in: path
+          description: derivative id to delete
+          required: true
+          schema:
+            type: string
+            format: uuid            
+      responses:
+        '200':
+          description: derivative marked as deleted
+        '400':
+          description: invalid ID supplied
+        '404':
+          description: derivative not found
+
+components:
+  schemas:
+    Derivative:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              format: uuid
+          allOf:
+           - $ref: '#/components/schemas/CommonDerivative'
+           
+    NewDerivative:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          allOf:
+           - $ref: '#/components/schemas/CommonDerivative'
+                      
+    CommonDerivative:
+      type: object
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          enum: [derivative]      
+          description: The type of the object subtype data being returned.
+        attributes:
+          description: Schema representing the derivative
+          type: object
+          required:
+            - dcType
+            - acSubtype
+          properties:
+            bucket:
+              type: string
+              description: Namespace of the file described by the metadata
+            fileIdentifier:
+              type: string
+              description: Identifier (as UUID) of the file described by the metadata
+            dcType:
+              enum:
+                - IMAGE
+                - MOVING_IMAGE
+                - SOUND
+                - TEXT
+                - DATASET
+                - UNDETERMINED
+              description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
+            dcFormat:
+              type: string
+              description:
+                A string describing the technical format of the resource.
+                IANA media type. https://tdwg.github.io/ac/termlist/#dc_format
+            acHashFunction:
+              type: string
+              description:
+                The cryptographic hash function used to compute the value
+                given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction
+            acHashValue:
+              type: string
+              description:
+                Hash of the uploaded object. Automaticaly generated on successful
+                file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue
+            derivativeType:
+              enum:
+                - THUMBNAIL_IMAGE
+                - LARGE_IMAGE
+              description: Type of derivative
+            generatedFromDerivative:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [derivative]
+                    id:
+                      type: string
+                      format: uuid
+                      description: derivative generated from id
+                      example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+            acDerivedFrom:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [metadata]
+                    id:
+                      type: string
+                      format: uuid
+                      description: metadata derived from id
+                      example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+            
