@@ -319,6 +319,9 @@ components:
             acDerivedFrom:
               type: string
               format: uuid
+            group:
+              type: string
+              description: The group in which the metadata belongs to
         relationships:
           oneOf:
             - $ref: '#/components/schemas/MetaRelationships'
@@ -342,6 +345,25 @@ components:
                   format: uuid
                   description: dcCreator's id
                   example: 8f68a05f-937d-4d40-88b4-ed92720d9c3f
+        derivatives:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              data:
+                type: object
+                required:
+                  - type
+                  - id
+                properties:
+                  type: 
+                    enum: [derivative]
+                  id:
+                    type: string
+                    format: uuid
+                    description: metadata's derivatives id
+                    example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
         acMetadataCreator:
           type: object
           properties:
