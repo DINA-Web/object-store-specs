@@ -205,6 +205,10 @@ components:
                 - THUMBNAIL_IMAGE
                 - LARGE_IMAGE
               description: Type of derivative
+        relationships:
+          type: object
+          nullable: true
+          properties:
             generatedFromDerivative:
               type: object
               properties:
@@ -237,4 +241,4 @@ components:
                       format: uuid
                       description: metadata derived from id
                       example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
-            
+          
