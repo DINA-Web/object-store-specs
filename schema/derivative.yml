@@ -167,8 +167,11 @@ components:
           description: Schema representing the derivative
           type: object
           required:
+            - bucket
+            - fileIdentifier
+            - fileExtension
             - dcType
-            - acSubtype
+            - dcFormat
           properties:
             bucket:
               type: string
