@@ -83,29 +83,6 @@ paths:
           description: Invalid ID supplied
         "404":
           description: derivative not found
-    patch:
-      summary: Update an derivative
-      operationId: updateDerivative
-      description: Update an derivative
-      parameters:
-        - name: Id
-          in: path
-          description: derivative id to patch
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: derivative updated
-        '400':
-          description: 'invalid input, object invalid'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Derivative'
-        description: derivative to update
     delete:
       summary: Delete an derivative
       operationId: deleteDerivative
