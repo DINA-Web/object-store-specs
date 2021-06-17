@@ -320,42 +320,37 @@ components:
               type: string
               format: uuid
         relationships:
-          oneOf:
-            - $ref: '#/components/schemas/MetaRelationships'
-            - {}
-
-    MetaRelationships:
-      type: object
-      properties:
-        dcCreator:
-          type: object
+          nullable: true
           properties:
-            data:
-              required:
-                - type
-                - id
-              properties:
-                type: 
-                  enum: [person]
-                id:
-                  type: string
-                  format: uuid
-                  description: dcCreator's id
-                  example: 8f68a05f-937d-4d40-88b4-ed92720d9c3f
-        acMetadataCreator:
-          type: object
-          properties:
-            data:
+            dcCreator:
               type: object
-              required:
-                - type
-                - id
               properties:
-                type: 
-                  enum: [person]
-                id:
-                  type: string
-                  format: uuid
-                  description: acMetadataCreator's id
-                  example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+                data:
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [person]
+                    id:
+                      type: string
+                      format: uuid
+                      description: dcCreator's id
+                      example: 8f68a05f-937d-4d40-88b4-ed92720d9c3f
+            acMetadataCreator:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [person]
+                    id:
+                      type: string
+                      format: uuid
+                      description: acMetadataCreator's id
+                      example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
 
