@@ -215,6 +215,19 @@ components:
             - xmpRightsWebStatement
             - dcRights
           properties:
+            createdBy:
+              type: string      
+              readOnly: true
+              description: authenticated user who create the metadata
+            createdOn:              
+              type: string
+              format: date-time                            
+              readOnly: true
+              description: date and time when the metadata was created in ISO format
+              example: 1985-04-12T23:20:50.52Z
+            group:
+              type: string
+              description: The group in which the metadata belongs to
             dcFormat:
               type: string
               description:
@@ -229,7 +242,7 @@ components:
                 - DATASET
                 - UNDETERMINED
               description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
-            acSubtype:
+            acSubType:
               type: string
               description: Subtype of object stored. Specialization of dcType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:subtype
             fileIdentifier:
@@ -300,25 +313,21 @@ components:
               description:
                 Point in time (ISO 8601 Date/Time) recording when the metadata
                 entry was created
-            deletedDate:
-              type: string
-              description:
-                Point in time (ISO 8601 Date/Time) recording when the metadata
-                entry was deleted. If empty or null, the metadata is considered not
-                deleted
-            managedAttributes:
+            managedAttributeValues:
               type: array
               items:
                 type: object
                 description: List of key/value pairs of managed attributes.
             acTags:
               type: array
+              nullable: true
               items:
                 type: string
                 description: List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag
-            acDerivedFrom:
-              type: string
-              format: uuid
+            orientation:
+              type: integer
+              nullable: true
+              description: EXIF Orientation value https://www.impulseadventure.com/photo/exif-orientation.html 
         relationships:
           nullable: true
           properties:

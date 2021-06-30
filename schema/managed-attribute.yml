@@ -152,9 +152,24 @@ components:
                 - name
                 - managedAttributeType
               properties:
+                createdBy:
+                  type: string      
+                  readOnly: true
+                  description: authenticated user who create the metadata
+                createdOn:              
+                  type: string
+                  format: date-time                            
+                  readOnly: true
+                  description: date and time when the metadata was created in ISO format
+                  example: 1985-04-12T23:20:50.52Z
                 name:
                   type: string
                   description: name of the managed attribute
+                  example: 
+                    specimenView
+                key:
+                  type: string
+                  description: key of the managed attribute
                   example: 
                     specimen_view
                 managedAttributeType:
@@ -171,10 +186,7 @@ components:
                       - type: integer
                   example: 
                     - dorsal
-                    - 1 
-                createdDate:
-                  type: string							      
-                  description: initial date this managed attribute was created if any      
+                    - 1   
                 description:
                   type: object
                   description: A map where the language is the key and the value is the description of this managed attribute in that language                      
