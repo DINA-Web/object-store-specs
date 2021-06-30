@@ -314,10 +314,10 @@ components:
                 Point in time (ISO 8601 Date/Time) recording when the metadata
                 entry was created
             managedAttributeValues:
-              type: array
-              items:
-                type: object
-                description: List of key/value pairs of managed attributes.
+              type: object
+              description: The manage attribute, with key and value pair
+              additionalProperties:
+                type: string
             acTags:
               type: array
               nullable: true
