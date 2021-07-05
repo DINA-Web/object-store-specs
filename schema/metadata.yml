@@ -323,61 +323,56 @@ components:
               type: string
               description: The group in which the metadata belongs to
         relationships:
-          oneOf:
-            - $ref: '#/components/schemas/MetaRelationships'
-            - {}
-
-    MetaRelationships:
-      type: object
-      properties:
-        dcCreator:
-          type: object
-          properties:
-            data:
-              required:
-                - type
-                - id
-              properties:
-                type: 
-                  enum: [person]
-                id:
-                  type: string
-                  format: uuid
-                  description: dcCreator's id
-                  example: 8f68a05f-937d-4d40-88b4-ed92720d9c3f
-        derivatives:
-          type: array
           nullable: true
-          items:
-            type: object
-            properties:
-              data:
-                type: object
-                required:
-                  - type
-                  - id
-                properties:
-                  type: 
-                    enum: [derivative]
-                  id:
-                    type: string
-                    format: uuid
-                    description: metadata's derivatives id
-                    example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
-        acMetadataCreator:
-          type: object
           properties:
-            data:
+            derivatives:
+              type: array
+              nullable: true
+              items:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    required:
+                      - type
+                      - id
+                    properties:
+                      type: 
+                        enum: [derivative]
+                      id:
+                        type: string
+                        format: uuid
+                        description: metadata's derivatives id
+                        example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+            dcCreator:
               type: object
-              required:
-                - type
-                - id
               properties:
-                type: 
-                  enum: [person]
-                id:
-                  type: string
-                  format: uuid
-                  description: acMetadataCreator's id
-                  example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+                data:
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [person]
+                    id:
+                      type: string
+                      format: uuid
+                      description: dcCreator's id
+                      example: 8f68a05f-937d-4d40-88b4-ed92720d9c3f
+            acMetadataCreator:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [person]
+                    id:
+                      type: string
+                      format: uuid
+                      description: acMetadataCreator's id
+                      example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
 
