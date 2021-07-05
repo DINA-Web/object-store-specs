@@ -25,3 +25,9 @@ paths:
     $ref: 'object-subtype.yml#/paths/~1v1~1object-subtype'
   /v1/object-subtype/{Id}:
     $ref: 'object-subtype.yml#/paths/~1v1~1object-subtype~1{Id}'
+  /v1/derivative:
+    $ref: 'derivative.yml#/paths/~1v1~1derivative'
+  /v1/derivative/{Id}:
+    $ref: 'derivative.yml#/paths/~1v1~1derivative~1{Id}'
+
+
