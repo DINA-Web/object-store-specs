@@ -328,9 +328,34 @@ components:
               type: integer
               nullable: true
               description: EXIF Orientation value https://www.impulseadventure.com/photo/exif-orientation.html 
+            acDerivedFrom:
+              type: string
+              format: uuid
+            group:
+              type: string
+              description: The group in which the metadata belongs to
         relationships:
           nullable: true
           properties:
+            derivatives:
+              type: array
+              nullable: true
+              items:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    required:
+                      - type
+                      - id
+                    properties:
+                      type: 
+                        enum: [derivative]
+                      id:
+                        type: string
+                        format: uuid
+                        description: metadata's derivatives id
+                        example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
             dcCreator:
               type: object
               properties:
