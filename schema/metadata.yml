@@ -338,24 +338,27 @@ components:
           nullable: true
           properties:
             derivatives:
-              type: array
+              type: object
               nullable: true
-              items:
-                type: object
-                properties:
-                  data:
+              properties:
+                data:
+                  type: array
+                  items:
                     type: object
-                    required:
-                      - type
-                      - id
                     properties:
-                      type: 
-                        enum: [derivative]
-                      id:
-                        type: string
-                        format: uuid
-                        description: metadata's derivatives id
-                        example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+                      data:
+                        type: object
+                        required:
+                          - type
+                          - id
+                        properties:
+                          type: 
+                            enum: [derivative]
+                          id:
+                            type: string
+                            format: uuid
+                            description: metadata's derivatives id
+                            example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
             dcCreator:
               type: object
               properties:
