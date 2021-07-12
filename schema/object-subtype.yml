@@ -171,6 +171,16 @@ components:
             - dcType
             - acSubtype
           properties:
+            createdBy:
+              type: string      
+              readOnly: true
+              description: authenticated user who create the metadata
+            createdOn:              
+              type: string
+              format: date-time                            
+              readOnly: true
+              description: date and time when the metadata was created in ISO format
+              example: 1985-04-12T23:20:50.52Z
             dcType:
               enum:
                 - IMAGE
