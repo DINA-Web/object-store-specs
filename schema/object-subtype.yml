@@ -171,6 +171,16 @@ components:
             - dcType
             - acSubtype
           properties:
+            createdBy:
+              type: string      
+              readOnly: true
+              description: authenticated user who create the metadata
+            createdOn:              
+              type: string
+              format: date-time                            
+              readOnly: true
+              description: date and time when the metadata was created in ISO format
+              example: 1985-04-12T23:20:50.52Z
             dcType:
               enum:
                 - IMAGE
@@ -180,7 +190,7 @@ components:
                 - DATASET
                 - UNDETERMINED
               description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
-            acSubType:
+            acSubtype:
               type: string
               description: A string describing the supporting specialized type of the
                     resource's DcType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:subtype
