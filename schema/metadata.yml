@@ -242,7 +242,7 @@ components:
                 - DATASET
                 - UNDETERMINED
               description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
-            acSubType:
+            acSubtype:
               type: string
               description: Subtype of object stored. Specialization of dcType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:subtype
             fileIdentifier:
