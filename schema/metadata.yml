@@ -308,11 +308,6 @@ components:
             notPubliclyReleasableReason:
               type: string
               description: Text explaining why an object cannot be released publicly
-            createdDate:
-              type: string
-              description:
-                Point in time (ISO 8601 Date/Time) recording when the metadata
-                entry was created
             managedAttributeValues:
               type: object
               description: The manage attribute, with key and value pair
