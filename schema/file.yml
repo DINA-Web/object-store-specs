@@ -1,0 +1,284 @@
+paths:
+  /v1/file/{bucket}:
+    post:
+      tags:
+        - File Controller
+      summary: upload file
+      operationId: handleFileUpload
+      description: upload a file
+      parameters:
+        - name: bucket
+          in: path
+          description: Namespace of the file described by the metadata
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: derivative created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: An derivative already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewDerivative'
+        description: derivative to add
+  /v1/file/{bucket}/derivative:
+    post:
+      tags:
+        - File Controller
+      parameters:
+        - name: bucket
+          in: path
+          description: Namespace of the file described by the metadata
+          required: true
+          schema:
+            type: string
+      summary: upload derivative
+      operationId: handleDerivativeUpload
+      description: Add an derivative
+      responses:
+        '201':
+          description: derivative created
+        '400':
+          description: 'invalid input, object invalid'
+        '409':
+          description: An derivative already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewDerivative'
+        description: derivative to add
+  /v1/file/{bucket}/{fileId}:
+    get:
+      tags:
+        - File Controller
+      parameters:
+        - name: bucket
+          in: path
+          description: Namespace of the file described by the metadata
+          required: true
+          schema:
+            type: string
+        - name: fileId
+          in: path
+          description: metadata id to patch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      summary: download Object
+      description: Triggers a download of a file. Note that the file requires a metadata entry in the database to be available for download.
+      operationId: downloadObject         
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Derivative'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: derivative not found
+  /v1/file/{bucket}/derivative/{fileId}:
+    get:
+      tags:
+        - File Controller
+      parameters:
+        - name: bucket
+          in: path
+          description: Namespace of the file described by the metadata
+          required: true
+          schema:
+            type: string
+        - name: fileId
+          in: path
+          description: metadata id to patch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      summary: download Derivative
+      description: Triggers a download of a file. Note that the file requires a metadata entry in the database to be available for download.
+      operationId: downloadDerivative         
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Derivative'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: derivative not found
+  /v1/file/{bucket}/{fileId}/thumbnail:
+    get:
+      tags:
+        - File Controller
+      parameters:
+        - name: bucket
+          in: path
+          description: metadata id to patch
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: fileId
+          in: path
+          description: metadata id to patch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      summary: download Thumbnail
+      description: Triggers a download of a file. Note that the file requires a metadata entry in the database to be available for download.
+      operationId: downloadThumbnail          
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Derivative'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: derivative not found
+components:
+  schemas:
+    Derivative:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              format: uuid
+          allOf:
+           - $ref: '#/components/schemas/CommonDerivative'
+           
+    NewDerivative:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          allOf:
+           - $ref: '#/components/schemas/CommonDerivative'
+                      
+    CommonDerivative:
+      type: object
+      required:
+        - type
+        - attributes
+      properties:
+        type:
+          enum: [derivative]      
+          description: The type of the object subtype data being returned.
+        attributes:
+          description: Schema representing the derivative
+          type: object
+          required:
+            - bucket
+            - fileIdentifier
+            - fileExtension
+            - dcType
+            - dcFormat
+          properties:
+            createdBy:
+              type: string      
+              readOnly: true
+              description: authenticated user who create the derivative
+            createdOn:              
+              type: string
+              format: date-time                            
+              readOnly: true
+              description: date and time when the material sample was created in ISO format
+              example: 1985-04-12T23:20:50.52Z
+            bucket:
+              type: string
+              description: Namespace of the file described by the metadata
+            fileExtension:
+              type: string
+              description: Identifier specified as a suffix to the name of a file
+            fileIdentifier:
+              type: string
+              description: Identifier (as UUID) of the file described by the metadata
+            dcType:
+              enum:
+                - IMAGE
+                - MOVING_IMAGE
+                - SOUND
+                - TEXT
+                - DATASET
+                - UNDETERMINED
+              description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
+            dcFormat:
+              type: string
+              description:
+                A string describing the technical format of the resource.
+                IANA media type. https://tdwg.github.io/ac/termlist/#dc_format
+            acHashFunction:
+              type: string
+              description:
+                The cryptographic hash function used to compute the value
+                given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction
+            acHashValue:
+              type: string
+              description:
+                Hash of the uploaded object. Automaticaly generated on successful
+                file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue
+            derivativeType:
+              enum:
+                - THUMBNAIL_IMAGE
+                - LARGE_IMAGE
+              description: Type of derivative
+        relationships:
+          type: object
+          nullable: true
+          properties:
+            generatedFromDerivative:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [derivative]
+                    id:
+                      type: string
+                      format: uuid
+                      description: derivative generated from id
+                      example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+            acDerivedFrom:
+              type: object
+              properties:
+                data:
+                  type: object
+                  required:
+                    - type
+                    - id
+                  properties:
+                    type: 
+                      enum: [metadata]
+                    id:
+                      type: string
+                      format: uuid
+                      description: metadata derived from id
+                      example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+          
