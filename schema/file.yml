@@ -14,17 +14,48 @@ paths:
           schema:
             type: string
       responses:
-        '201':
-          description: derivative created
-        '400':
-          description: 'invalid input, object invalid'
-        '409':
-          description: An derivative already exists
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fileUpload'
+        '500':
+          description: internal server error
       requestBody:
         content:
-          application/json:
+          application/octet-stream:
+            schema: 
+              type: string
+              format: binary
+          application/pdf:
+            schema: 
+              type: string
+              format: binary
+          application/zip:
+            schema: 
+              type: string
+              format: binary
+          image/png:
             schema:
-              $ref: '#/components/schemas/NewDerivative'
+              type: string
+              format: binary
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+          image/png:
+            schema:
+              type: string
+              format: binary  
+          image/bmp:
+            schema:
+              type: string
+              format: binary    
+          image/gif:
+            schema:
+              type: string
+              format: binary     
         description: derivative to add
   /v1/file/{bucket}/derivative:
     post:
@@ -41,17 +72,70 @@ paths:
       operationId: handleDerivativeUpload
       description: Add an derivative
       responses:
-        '201':
-          description: derivative created
-        '400':
-          description: 'invalid input, object invalid'
-        '409':
-          description: An derivative already exists
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fileUpload'
+        '500':
+          description: internal server error
       requestBody:
         content:
-          application/json:
+          application/octet-stream:
+            schema: 
+              type: string
+              format: binary
+          application/pdf:
+            schema: 
+              type: string
+              format: binary
+          application/zip:
+            schema: 
+              type: string
+              format: binary
+          image/png:
             schema:
-              $ref: '#/components/schemas/NewDerivative'
+              type: string
+              format: binary
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+          image/png:
+            schema:
+              type: string
+              format: binary  
+          image/bmp:
+            schema:
+              type: string
+              format: binary    
+          image/gif:
+            schema:
+              type: string
+              format: binary   
+        description: derivative to add
+        description: derivative to add
+  /v1/conversion/workbook:
+    post:
+      tags:
+        - File Controller
+      summary: file conversion
+      operationId: handleFileConversion
+      description: handle file conversion
+      responses:
+        '200':
+          description: operation successful
+        '405':
+          description: method not allowed
+        '415':
+          description: unsupported media type
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
         description: derivative to add
   /v1/file/{bucket}/{fileId}:
     get:
@@ -76,15 +160,42 @@ paths:
       operationId: downloadObject         
       responses:
         "200":
-          description: successful operation
+          description: a file
           content:
-            application/json:
+            application/octet-stream:
+              schema: 
+                type: string
+                format: binary
+            application/pdf:
+              schema: 
+                type: string
+                format: binary
+            application/zip:
+              schema: 
+                type: string
+                format: binary
+            image/png:
               schema:
-                $ref: '#/components/schemas/Derivative'
-        "400":
-          description: Invalid ID supplied
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary  
+            image/bmp:
+              schema:
+                type: string
+                format: binary    
+            image/gif:
+              schema:
+                type: string
+                format: binary 
         "404":
-          description: derivative not found
+          description: file not found
   /v1/file/{bucket}/derivative/{fileId}:
     get:
       tags:
@@ -104,17 +215,44 @@ paths:
             type: string
             format: uuid
       summary: download Derivative
-      description: Triggers a download of a file. Note that the file requires a metadata entry in the database to be available for download.
+      description: Triggers a download of a derivative.
       operationId: downloadDerivative         
       responses:
         "200":
           description: successful operation
           content:
-            application/json:
+            application/octet-stream:
+              schema: 
+                type: string
+                format: binary
+            application/pdf:
+              schema: 
+                type: string
+                format: binary
+            application/zip:
+              schema: 
+                type: string
+                format: binary
+            image/png:
               schema:
-                $ref: '#/components/schemas/Derivative'
-        "400":
-          description: Invalid ID supplied
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary  
+            image/bmp:
+              schema:
+                type: string
+                format: binary    
+            image/gif:
+              schema:
+                type: string
+                format: binary 
         "404":
           description: derivative not found
   /v1/file/{bucket}/{fileId}/thumbnail:
@@ -137,21 +275,96 @@ paths:
             type: string
             format: uuid
       summary: download Thumbnail
-      description: Triggers a download of a file. Note that the file requires a metadata entry in the database to be available for download.
+      description: Triggers a download of a thumbnail.
       operationId: downloadThumbnail          
       responses:
         "200":
           description: successful operation
           content:
-            application/json:
+            image/png:
               schema:
-                $ref: '#/components/schemas/Derivative'
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary  
+            image/bmp:
+              schema:
+                type: string
+                format: binary    
+            image/gif:
+              schema:
+                type: string
+                format: binary 
         "400":
           description: Invalid ID supplied
         "404":
-          description: derivative not found
+          description: thumbnail not found
 components:
   schemas:
+    fileUpload:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        fileIdentifier:
+          type: string
+          description: Identifier (as UUID) of the file described by the metadata
+        dcType:
+          enum:
+            - IMAGE
+            - MOVING_IMAGE
+            - SOUND
+            - TEXT
+            - DATASET
+            - UNDETERMINED
+          description: Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
+        createdBy:
+          type: string      
+          readOnly: true
+          description: authenticated user who create the derivative
+        createdOn:              
+          type: string
+          format: date-time                            
+          readOnly: true
+          description: date and time when the material sample was created in ISO format
+          example: 1985-04-12T23:20:50.52Z
+        originalFilename:
+          type: string
+          description: Name of the file at the source without the folder structure
+        receivedMediaType:
+          type: string
+        detectedMediaType:
+          type: string
+        detectedFileExtension:
+          type: string
+        evaluatedMediaType:
+          type: string
+        evaluatedFileExtension:
+          type: string
+        sha1Hex:
+          type: string
+        bucket:
+          type: string
+          description: Namespace of the file described by the metadata
+        dateTimeDigitized:
+          type: string
+          description:
+            Date (ISO 8601 Date/Time) the first digital version was created.
+            https://tdwg.github.io/ac/termlist/#ac_digitizationDate
+        exif:
+          type: array
+          items:
+            type: string
+        isDerivative:
+          type: boolean
+
     Derivative:
       type: object
       required:
