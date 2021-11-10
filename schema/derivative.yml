@@ -1,6 +1,8 @@
 paths:
   /v1/derivative:
     get:
+      tags:
+        - Derivative
       summary: List derivatives
       operationId: getDerivatives
       description: By passing in query string, user can get available derivatives authorised
@@ -43,6 +45,8 @@ paths:
         '404':
           description: derivatives not found
     post:
+      tags:
+        - Derivative
       summary: Add an derivative
       operationId: addDerivative
       description: Add an derivative
@@ -61,6 +65,8 @@ paths:
         description: derivative to add
   /v1/derivative/{Id}:
     get:
+      tags:
+        - Derivative
       summary: Get an derivative
       description: Return a single derivative
       operationId: getDerivativeById
@@ -84,6 +90,8 @@ paths:
         "404":
           description: derivative not found
     delete:
+      tags:
+        - Derivative
       summary: Delete an derivative
       operationId: deleteDerivative
       description: Delete an derivative
