@@ -44,10 +44,6 @@ paths:
             schema:
               type: string
               format: binary
-          image/png:
-            schema:
-              type: string
-              format: binary  
           image/bmp:
             schema:
               type: string
@@ -102,10 +98,6 @@ paths:
             schema:
               type: string
               format: binary
-          image/png:
-            schema:
-              type: string
-              format: binary  
           image/bmp:
             schema:
               type: string
@@ -114,7 +106,6 @@ paths:
             schema:
               type: string
               format: binary   
-        description: derivative to add
         description: derivative to add
   /v1/conversion/workbook:
     post:
@@ -182,10 +173,6 @@ paths:
               schema:
                 type: string
                 format: binary
-            image/png:
-              schema:
-                type: string
-                format: binary  
             image/bmp:
               schema:
                 type: string
@@ -241,10 +228,6 @@ paths:
               schema:
                 type: string
                 format: binary
-            image/png:
-              schema:
-                type: string
-                format: binary  
             image/bmp:
               schema:
                 type: string
@@ -289,10 +272,6 @@ paths:
               schema:
                 type: string
                 format: binary
-            image/png:
-              schema:
-                type: string
-                format: binary  
             image/bmp:
               schema:
                 type: string
