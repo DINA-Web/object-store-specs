@@ -33,8 +33,6 @@ paths:
     $ref: 'file.yml#/paths/~1v1~1file~1{bucket}'
   /v1/file/{bucket}/derivative:
     $ref: 'file.yml#/paths/~1v1~1file~1{bucket}~1derivative'
-  /v1/conversion/workbook:
-    $ref: 'file.yml#/paths/~1v1~1conversion~1workbook'
   /v1/file/{bucket}/{fileId}:
     $ref: 'file.yml#/paths/~1v1~1file~1{bucket}~1{fileId}'
   /v1/file/{bucket}/derivative/{fileId}:

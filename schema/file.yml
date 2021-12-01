@@ -107,27 +107,6 @@ paths:
               type: string
               format: binary   
         description: derivative to add
-  /v1/conversion/workbook:
-    post:
-      tags:
-        - File Controller
-      summary: file conversion
-      operationId: handleFileConversion
-      description: handle file conversion
-      responses:
-        '200':
-          description: operation successful
-        '405':
-          description: method not allowed
-        '415':
-          description: unsupported media type
-      requestBody:
-        content:
-          application/octet-stream:
-            schema:
-              type: string
-              format: binary
-        description: derivative to add
   /v1/file/{bucket}/{fileId}:
     get:
       tags:
