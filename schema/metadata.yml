@@ -1,6 +1,8 @@
 paths:
   /v1/metadata:
     get:
+      tags:
+        - Metadata
       summary: List metadatas
       operationId: getMetadatas
       description: By passing in query string, user can get available metadatas authorised
@@ -53,6 +55,8 @@ paths:
         "404":
           description: metadata not found
     post:
+      tags:
+        - Metadata
       summary: Add a metadata
       operationId: addMetadata
       description: Add a metadata
@@ -71,6 +75,8 @@ paths:
         description: Metadata to add
   /v1/metadata/{Id}:
     get:
+      tags:
+        - Metadata
       summary: Get a metadata
       description: Return a single metadata
       operationId: getMetadataById
@@ -94,6 +100,8 @@ paths:
         "404":
           description: Metadata not found
     patch:
+      tags:
+        - Metadata
       summary: Update a metadata
       operationId: updateMetadata
       description: Update a metadata
@@ -117,6 +125,8 @@ paths:
               $ref: "#/components/schemas/Metadata"
         description: metadata to add
     delete:
+      tags:
+        - Metadata
       summary: Delete a metadata
       operationId: deleteMetadata
       description: Delete a metadata

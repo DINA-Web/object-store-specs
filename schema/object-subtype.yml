@@ -1,6 +1,8 @@
 paths:
   /v1/object-subtype:
     get:
+      tags:
+        - Object Subtype
       summary: List object-subtypes
       operationId: getObjectSubtypes
       description: By passing in query string, user can get available object-subtypes authorised
@@ -43,6 +45,8 @@ paths:
         '404':
           description: object-subtypes not found
     post:
+      tags:
+        - Object Subtype
       summary: Add an object-subtype
       operationId: addObjectSubtype
       description: Add an object-subtype
@@ -61,6 +65,8 @@ paths:
         description: object-subtype to add
   /v1/object-subtype/{Id}:
     get:
+      tags:
+        - Object Subtype
       summary: Get an object-subtype
       description: Return a single object-subtype
       operationId: getObjectSubtypeById
@@ -84,6 +90,8 @@ paths:
         "404":
           description: object-subtype not found
     patch:
+      tags:
+        - Object Subtype
       summary: Update an object-subtype
       operationId: updateObjectSubtype
       description: Update an object-subtype
@@ -107,6 +115,8 @@ paths:
               $ref: '#/components/schemas/ObjectSubtype'
         description: object-subtype to update
     delete:
+      tags:
+        - Object Subtype
       summary: Delete an object-subtype
       operationId: deleteObjectSubtype
       description: Delete an object-subtype

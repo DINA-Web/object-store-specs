@@ -29,5 +29,13 @@ paths:
     $ref: 'derivative.yml#/paths/~1v1~1derivative'
   /v1/derivative/{Id}:
     $ref: 'derivative.yml#/paths/~1v1~1derivative~1{Id}'
-
-
+  /v1/file/{bucket}:
+    $ref: 'file.yml#/paths/~1v1~1file~1{bucket}'
+  /v1/file/{bucket}/derivative:
+    $ref: 'file.yml#/paths/~1v1~1file~1{bucket}~1derivative'
+  /v1/file/{bucket}/{fileId}:
+    $ref: 'file.yml#/paths/~1v1~1file~1{bucket}~1{fileId}'
+  /v1/file/{bucket}/derivative/{fileId}:
+    $ref: 'file.yml#/paths/~1v1~1file~1{bucket}~1derivative~1{fileId}'
+  /v1/file/{bucket}/{fileId}/thumbnail:
+    $ref: 'file.yml#/paths/~1v1~1file~1{bucket}~1{fileId}~1thumbnail'

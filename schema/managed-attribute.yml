@@ -1,6 +1,8 @@
 paths:
   /v1/managed-attribute:
     get:
+      tags:
+        - Managed Attribute
       summary: List managed attributes
       operationId: getManagedAttributes
       description: By passing in query string, user can get available managed attributes authorised
@@ -43,6 +45,8 @@ paths:
         '404':
           description: managed attribute not found
     post:
+      tags:
+        - Managed Attribute
       summary: Add a managed attribute
       operationId: addManagedAttribute
       description: Add a managed attribute
@@ -61,6 +65,8 @@ paths:
         description: Managed attribute to add
   /v1/managed-attribute/{Id}:
     get:
+      tags:
+        - Managed Attribute
       summary: Get a managed attribute 
       description: Return a single managed attribute
       operationId: getManagedAttributeById
@@ -84,6 +90,8 @@ paths:
         "404":
           description: Managed attribute not found
     patch:
+      tags:
+        - Managed Attribute
       summary: Update a managed attribute
       operationId: updateManagedAttribute
       description: Update a managed attribute
@@ -107,6 +115,8 @@ paths:
               $ref: '#/components/schemas/ManagedAttribute'
         description: managed attribute to add
     delete:
+      tags:
+        - Managed Attribute
       summary: Delete a managed attribute
       operationId: deleteManagedAttribute
       description: Delete a managed attribute
