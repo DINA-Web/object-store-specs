@@ -197,10 +197,20 @@ components:
                   example: 
                     - dorsal
                     - 1   
-                description:
+                multilingualDescription:
                   type: object
-                  description: A map where the language is the key and the value is the description of this managed attribute in that language                      
-                  example: {
-                     "fr":  Description en Français,
-                     "en":  English description}
+                  nullable: true
+                  properties:
+                    descriptions:
+                      type: array
+                      nullable: true
+                      items:
+                        type: object
+                        properties:
+                          lang:
+                            type: string
+                            description: language of the description
+                          desc:
+                            type: string
+                            description: the description
 
