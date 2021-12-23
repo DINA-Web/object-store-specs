@@ -333,6 +333,12 @@ components:
               type: integer
               nullable: true
               description: EXIF Orientation value https://www.impulseadventure.com/photo/exif-orientation.html 
+            isExternal:
+              type: boolean
+            resourceExternalURI:
+              type: string
+              format: uri
+              nullable: true
         relationships:
           nullable: true
           properties:

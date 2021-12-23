@@ -206,6 +206,12 @@ components:
                 - THUMBNAIL_IMAGE
                 - LARGE_IMAGE
               description: Type of derivative
+            isExternal:
+              type: boolean
+            resourceExternalURI:
+              type: string
+              format: uri
+              nullable: true
         relationships:
           type: object
           nullable: true
