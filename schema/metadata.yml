@@ -216,17 +216,13 @@ components:
           description: Schema representing the metadata associated with objects
           type: object
           required:
-            oneOf:
-              - fileIdentifier
-              - resourceExternalURI
-            allOf:
-              - bucket
-              - dcFormat
-              - dcType
-              - acDigitizationDate
-              - xmpRightsUsageTerms
-              - xmpRightsWebStatement
-              - dcRights
+            - bucket
+            - dcFormat
+            - dcType
+            - acDigitizationDate
+            - xmpRightsUsageTerms
+            - xmpRightsWebStatement
+            - dcRights
           properties:
             createdBy:
               type: string      
