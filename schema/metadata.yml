@@ -317,7 +317,7 @@ components:
             notPubliclyReleasableReason:
               type: string
               description: Text explaining why an object cannot be released publicly
-            managedAttributeValues:
+            managedAttributes:
               type: object
               description: The manage attribute, with key and value pair. A managedAttributeValues' entry key is expected to be set as a managed attribute's key.
               additionalProperties:
