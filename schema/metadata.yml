@@ -164,10 +164,6 @@ components:
               description: Identifier of the object as UUID
           allOf:
             - $ref: "#/components/schemas/CommonMetadata"
-        meta:
-          type: object
-          allOf:
-            - $ref: "#/components/schemas/CommonMeta"
 
     NewMetadata:
       type: object
@@ -178,36 +174,6 @@ components:
           type: object
           allOf:
             - $ref: "#/components/schemas/CommonMetadata"
-        meta:
-          type: object
-          allOf:
-            - $ref: "#/components/schemas/CommonMeta"
-
-    CommonMeta:
-      type: object
-      required:
-        - external
-      properties:
-        totalResourceCount:
-          type: integer
-          description: Total resources retrieved from the query without pagination applied.
-        moduleVersion:
-          type: string
-          description: The current version of the ObjectStore API.
-        external:
-          type: array
-          items:
-            type: object
-            required:
-              - href
-              - type
-            properties:
-              type:
-                type: string
-                example: person
-              href:
-                type: string
-                example: dinaapi.org/agent/person
 
     CommonMetadata:
       type: object
