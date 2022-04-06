@@ -318,7 +318,7 @@ components:
             publiclyReleasable:
               type: boolean
               description:
-                Can the object representented by the metadata be released
+                Can the object represented by the metadata be released
                 publicly? An object that is released publicly retains its license and
                 copyright
             notPubliclyReleasableReason:
@@ -338,7 +338,11 @@ components:
             orientation:
               type: integer
               nullable: true
-              description: EXIF Orientation value https://www.impulseadventure.com/photo/exif-orientation.html 
+              description: EXIF Orientation value https://www.impulseadventure.com/photo/exif-orientation.html
+            resourceExternalURL:
+              type: string
+              nullable: true
+              description: Instead of linking to an internal file, metadata can also be linked to an external resource.
         relationships:
           nullable: true
           properties:
@@ -350,20 +354,17 @@ components:
                   type: array
                   items:
                     type: object
+                    required:
+                      - type
+                      - id
                     properties:
-                      data:
-                        type: object
-                        required:
-                          - type
-                          - id
-                        properties:
-                          type: 
-                            enum: [derivative]
-                          id:
-                            type: string
-                            format: uuid
-                            description: metadata's derivatives id
-                            example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
+                      type: 
+                        enum: [derivative]
+                      id:
+                        type: string
+                        format: uuid
+                        description: metadata's derivatives id
+                        example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
             dcCreator:
               type: object
               properties:
