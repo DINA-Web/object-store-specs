@@ -127,8 +127,8 @@ components:
               type: string
               format: uuid
           allOf:
-           - $ref: '#/components/schemas/CommonDerivative'
-           
+            - $ref: '#/components/schemas/CommonDerivative'
+            
     NewDerivative:
       type: object
       required:
@@ -137,7 +137,7 @@ components:
         data:
           type: object
           allOf:
-           - $ref: '#/components/schemas/CommonDerivative'
+            - $ref: '#/components/schemas/CommonDerivative'
                       
     CommonDerivative:
       type: object
