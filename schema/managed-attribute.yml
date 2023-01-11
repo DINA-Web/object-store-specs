@@ -182,11 +182,13 @@ components:
                   description: key of the managed attribute
                   example: 
                     specimen_view
-                managedAttributeType:
+                vocabularyElementType:
                   description: type of the managed attribute          
                   enum: [
                      STRING,
-                     INTEGER]
+                     INTEGER,
+                     DATE,
+                     BOOL]
                 acceptedValues:
                   type: array
                   description: accepted values of the named attribute (if any)      
