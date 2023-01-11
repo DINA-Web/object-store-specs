@@ -160,7 +160,7 @@ components:
               type: object
               required:
                 - name
-                - managedAttributeType
+                - vocabularyElementType
               properties:
                 createdBy:
                   type: string      
