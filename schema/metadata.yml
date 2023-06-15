@@ -250,7 +250,8 @@ components:
                 Automatically set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate
             originalFilename:
               type: string
-              description: Name of the file at the source without the folder structure
+              readOnly: true
+              description: Name of the file at the source without the folder structure. Taken from object-upload.
             fileExtension:
               type: string
               description: Extension of the file including the dot (e.g. '.png')
