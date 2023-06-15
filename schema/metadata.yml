@@ -211,9 +211,10 @@ components:
               description: The group in which the metadata belongs to
             dcFormat:
               type: string
+              readOnly: true
               description:
                 A string describing the technical format of the resource.
-                IANA media type. https://tdwg.github.io/ac/termlist/#dc_format
+                IANA media type. https://tdwg.github.io/ac/termlist/#dc_format . Taken from object-upload.
             dcType:
               enum:
                 - IMAGE
@@ -254,17 +255,20 @@ components:
               description: Name of the file at the source without the folder structure. Taken from object-upload.
             fileExtension:
               type: string
+              readOnly: true
               description: Extension of the file including the dot (e.g. '.png')
             acHashFunction:
               type: string
+              readOnly: true
               description:
                 The cryptographic hash function used to compute the value
-                given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction
+                given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction . Taken from object-upload.
             acHashValue:
               type: string
+              readOnly: true
               description:
                 Hash of the uploaded object. Automaticaly generated on successful
-                file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue
+                file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue . Taken from object-upload.
             xmpRightsUsageTerms:
               type: string
               description:
