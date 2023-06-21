@@ -217,52 +217,6 @@ paths:
                 format: binary 
         "404":
           description: derivative not found
-  /v1/file/{bucket}/{fileId}/thumbnail:
-    get:
-      tags:
-        - File Controller
-      parameters:
-        - name: bucket
-          in: path
-          description: metadata id to patch
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: fileId
-          in: path
-          description: metadata id to patch
-          required: true
-          schema:
-            type: string
-            format: uuid
-      summary: download Thumbnail
-      description: Triggers a download of a thumbnail.
-      operationId: downloadThumbnail          
-      responses:
-        "200":
-          description: successful operation
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
-            image/jpeg:
-              schema:
-                type: string
-                format: binary
-            image/bmp:
-              schema:
-                type: string
-                format: binary    
-            image/gif:
-              schema:
-                type: string
-                format: binary 
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: thumbnail not found
 components:
   schemas:
     fileUpload:
