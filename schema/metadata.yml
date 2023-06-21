@@ -241,7 +241,7 @@ components:
             acDigitizationDate:
               type: string
               description:
-                Date (ISO 8601 Date/Time) the first digital version was created.
+                Date (ISO 8601 Date/Time with offset) the first digital version was created. 2007-12-03T10:15:30-05:00
                 https://tdwg.github.io/ac/termlist/#ac_digitizationDate
             xmpMetadataDate:
               type: string
