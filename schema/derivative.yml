@@ -206,6 +206,15 @@ components:
                 - THUMBNAIL_IMAGE
                 - LARGE_IMAGE
               description: Type of derivative
+            publiclyReleasable:
+              type: boolean
+              description:
+                Can the object represented by the metadata be released
+                publicly? An object that is released publicly retains its license and
+                copyright
+            notPubliclyReleasableReason:
+              type: string
+              description: Text explaining why an object cannot be released publicly
         relationships:
           type: object
           nullable: true
