@@ -208,10 +208,10 @@ components:
               description: Type of derivative
             publiclyReleasable:
               type: boolean
-              description: Can the record represented by the derivative be released publicly?
+              description: Can the digital object represented by the derivative be released publicly?
             notPubliclyReleasableReason:
               type: string
-              description: Text explaining why an object cannot be released publicly
+              description: Text explaining why the record cannot be released publicly
         relationships:
           type: object
           nullable: true
