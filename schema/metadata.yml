@@ -288,12 +288,12 @@ components:
             publiclyReleasable:
               type: boolean
               description:
-                Can the object represented by the metadata be released
-                publicly? An object that is released publicly retains its license and
+                Can the digital object represented by the metadata be released
+                publicly? A digital object that is released publicly retains its license and
                 copyright
             notPubliclyReleasableReason:
               type: string
-              description: Text explaining why an object cannot be released publicly
+              description: Text explaining why the record cannot be released publicly
             managedAttributes:
               type: object
               description: The managed attribute, with key and value pair. A managedAttributes entry key is expected to be set as a managed attribute's key.
