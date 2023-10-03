@@ -32,17 +32,17 @@ paths:
             minimum: 0
             maximum: 50
       responses:
-        '200':
+        "200":
           description: derivatives satifying the query restrictions
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Derivative'
-        '400':
+                  $ref: "#/components/schemas/Derivative"
+        "400":
           description: bad input parameter
-        '404':
+        "404":
           description: derivatives not found
     post:
       tags:
@@ -51,17 +51,17 @@ paths:
       operationId: addDerivative
       description: Add an derivative
       responses:
-        '201':
+        "201":
           description: derivative created
-        '400':
-          description: 'invalid input, object invalid'
-        '409':
+        "400":
+          description: "invalid input, object invalid"
+        "409":
           description: An derivative already exists
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewDerivative'
+              $ref: "#/components/schemas/NewDerivative"
         description: derivative to add
   /v1/derivative/{Id}:
     get:
@@ -77,14 +77,14 @@ paths:
           required: true
           schema:
             type: string
-            format: uuid            
+            format: uuid
       responses:
         "200":
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Derivative'
+                $ref: "#/components/schemas/Derivative"
         "400":
           description: Invalid ID supplied
         "404":
@@ -102,13 +102,13 @@ paths:
           required: true
           schema:
             type: string
-            format: uuid            
+            format: uuid
       responses:
-        '200':
+        "200":
           description: derivative marked as deleted
-        '400':
+        "400":
           description: invalid ID supplied
-        '404':
+        "404":
           description: derivative not found
 
 components:
@@ -127,8 +127,8 @@ components:
               type: string
               format: uuid
           allOf:
-            - $ref: '#/components/schemas/CommonDerivative'
-            
+            - $ref: "#/components/schemas/CommonDerivative"
+
     NewDerivative:
       type: object
       required:
@@ -137,8 +137,8 @@ components:
         data:
           type: object
           allOf:
-            - $ref: '#/components/schemas/CommonDerivative'
-                      
+            - $ref: "#/components/schemas/CommonDerivative"
+
     CommonDerivative:
       type: object
       required:
@@ -146,7 +146,7 @@ components:
         - attributes
       properties:
         type:
-          enum: [derivative]      
+          enum: [derivative]
           description: The type of the object subtype data being returned.
         attributes:
           description: Schema representing the derivative
@@ -159,12 +159,12 @@ components:
             - dcFormat
           properties:
             createdBy:
-              type: string      
+              type: string
               readOnly: true
               description: authenticated user who create the derivative
-            createdOn:              
+            createdOn:
               type: string
-              format: date-time                            
+              format: date-time
               readOnly: true
               description: date and time when the material sample was created in ISO format
               example: 1985-04-12T23:20:50.52Z
@@ -206,6 +206,12 @@ components:
                 - THUMBNAIL_IMAGE
                 - LARGE_IMAGE
               description: Type of derivative
+            publiclyReleasable:
+              type: boolean
+              description: Can the record represented by the derivative be released publicly?
+            notPubliclyReleasableReason:
+              type: string
+              description: Text explaining why an object cannot be released publicly
         relationships:
           type: object
           nullable: true
@@ -219,7 +225,7 @@ components:
                     - type
                     - id
                   properties:
-                    type: 
+                    type:
                       enum: [derivative]
                     id:
                       type: string
@@ -235,11 +241,10 @@ components:
                     - type
                     - id
                   properties:
-                    type: 
+                    type:
                       enum: [metadata]
                     id:
                       type: string
                       format: uuid
                       description: metadata derived from id
                       example: 1096500a-25dc-4a63-ba14-ea6ee5057fb3
-          
