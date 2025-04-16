@@ -212,6 +212,12 @@ components:
             notPubliclyReleasableReason:
               type: string
               description: Text explaining why the record cannot be released publicly
+            acTags:
+              type: array
+              nullable: true
+              items:
+                type: string
+                description: List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag
         relationships:
           type: object
           nullable: true
