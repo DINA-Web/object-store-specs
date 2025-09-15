@@ -249,6 +249,9 @@ components:
                 Point in time (ISO 8601 Date/Time) recording when the last
                 modification to metadata (not necessarily the media object itself) occurred.
                 Automatically set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate
+            filename:
+              type: string
+              description: Current name of the file including the file extension. The value may have been standardized.
             originalFilename:
               type: string
               readOnly: true
