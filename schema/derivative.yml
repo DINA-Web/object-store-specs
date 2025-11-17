@@ -221,6 +221,12 @@ components:
               items:
                 type: string
                 description: List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag
+            sourceSet:
+              type: string
+              description: "Used to group a set of records that were created together. From an import/migration."
+              nullable: true
+              minLength: 0
+              maxLength: 50
         relationships:
           type: object
           nullable: true
