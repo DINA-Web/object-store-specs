@@ -312,6 +312,10 @@ components:
               type: integer
               nullable: true
               description: EXIF Orientation value https://www.impulseadventure.com/photo/exif-orientation.html
+            isExternalResource:
+              type: boolean
+              nullable: false
+              description: Is the resource represented by the metadata an external resource ?
             resourceExternalURL:
               type: string
               description: Metadata can also reference a external resource instead of a internal file identifier. If this is provided, a file identifier cannot be set.
