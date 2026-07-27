@@ -209,6 +209,10 @@ components:
             group:
               type: string
               description: The group in which the metadata belongs to
+            resourceVersion:
+              type: number
+              readOnly: true
+              description: Used to prevent update data from being overridden by another transaction. Resend this field on update to allow the API to ensure you are not working with stale data.
             dcFormat:
               type: string
               readOnly: true
@@ -249,6 +253,9 @@ components:
                 Point in time (ISO 8601 Date/Time) recording when the last
                 modification to metadata (not necessarily the media object itself) occurred.
                 Automatically set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate
+            lastUpdatedOn:
+              type: string
+              description: Same as xmpMetadataDate but in a standard field
             filename:
               type: string
               description: Current name of the file including the file extension. The value may have been standardized.
